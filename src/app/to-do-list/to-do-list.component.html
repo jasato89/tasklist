@@ -1,0 +1,32 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<div class="flex flex-col justify-center items-center">
+  <h1 [ngClass]="{'text-4xl':true, 'font-sans':true, 'text-green-800':true, 'm-2':true, 'text-center':true}">To-do List
+  </h1>
+
+  <div class="w-full flex flex-row justify-center items-center">
+    <input id="newTask" placeholder="Add Item" type="text" [(ngModel)]="newTask" class="w-1/2 py-1">
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded m-4" (click)="addItem()">Add
+      item</button>
+  </div>
+  <div *ngFor="let item of tasks; let i = index" class="w-full flex flex-col justify-center items-center min-h-full">
+    <div *ngIf="!checkPostponed(i)" class="flex-row flex m-0.5 p-2 sm:w-2/3 w-full h-auto text-left items-center">
+
+      <div
+        [ngClass]="{'bg-blue-400':!item.getIsCompleted(), 'bg-green-400':item.getIsCompleted(), 'mr-0':true, 'p-2':true,'rounded-l-md':true, 'w-9/12':true, 'h-auto':true, 'text-base':true}">
+        <p><i class="material-icons align-middle pr-2">work</i>{{item.gettaskTitle()}}</p>
+      </div>
+      <div class="w-1/12 p-2 bg-green-400 hover:bg-green-500 text-center" (click)="markAsCompleted(i)"><i class="material-icons align-middle text-base text-gray-100">check_circle</i></div>
+      <div class="w-1/12 p-2 bg-yellow-200 hover:bg-yellow-300 text-center" (click)="markAsPostponed(i)"><i class="material-icons align-middle text-base text-gray-100">alarm_off</i></div>
+      <div class="w-1/12 p-2 rounded-r-md bg-red-500 hover:bg-red-600 text-center" (click)="deleteItem(i)"><i class="material-icons align-middle text-base text-gray-100">delete</i></div>
+    </div>
+  </div>
+  <div *ngIf="tasks.length >0" class="flex flex-row">
+
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-4"
+      (click)="hidePostponed()">Hide/ShowPostponed</button>
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-4"
+      (click)="removeCompleted()">Remove Completed</button>
+  </div>
+
+</div>
