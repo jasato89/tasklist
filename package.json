@@ -1,13 +1,16 @@
+
 {
   "name": "directives-lab706",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node serve.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "heroku-postbuild": "ng build --prod"
+
   },
   "private": true,
   "dependencies": {
@@ -21,11 +24,13 @@
     "@angular/router": "~11.2.1",
     "autoprefixer": "^9.8.6",
     "express": "^4.17.1",
-    "path": "^0.12.7",
-    "postcss": "^8.2.6",
+    "postcss": "^7.0.35",
     "rxjs": "~6.6.0",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.3",
     "tslib": "^2.0.0",
+    "@angular/cli": "~11.2.1",
+    "@angular/compiler-cli": "~11.2.1",
+    "typescript": "~4.1.2",
     "zone.js": "~0.11.3"
   },
   "devDependencies": {
@@ -35,7 +40,6 @@
     "@types/jasmine": "~3.6.0",
     "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0",
-    "enhanced-resolve": "^3.3.0",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~6.1.0",
@@ -47,5 +51,9 @@
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~4.1.2"
+  },
+  "engines": {
+    "node": "14.x",
+    "npm": "36.x"
   }
 }
