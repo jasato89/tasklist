@@ -53,6 +53,7 @@ export class ToDoListComponent implements OnInit {
     for(var i= 0; i < this.tasks.length; i++) {
       if(this.tasks[i].getIsCompleted() == true) {
           this.tasks.splice(i, 1);
+          i--;
       }
     }
 
